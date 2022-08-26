@@ -1,0 +1,8 @@
+---
+name: "Quarkus Xbuilder"
+metadata:
+  built-with-quarkus-core: "2.12.0.Final"
+  extension-dependencies:
+  - "io.quarkus:quarkus-arc"
+  - "io.quarkus:quarkus-core"
+artifact: "io.github.projec-openubl:quarkus-xbuilder::jar:1.0.0-SNAPSHOT"
