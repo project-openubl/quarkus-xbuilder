@@ -26,8 +26,7 @@ jobs:
         env:
           RELEASE_VERSION: ${{ inputs.version }}
         run: |
-          mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION
-          mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION -f integration-tests/
+          mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION -Pprepare-release
           
           git config --global user.email "project.openubl.preview.bot@gmail.com"
           git config --global user.name "Project-Openubl Bot"
@@ -91,8 +90,7 @@ jobs:
         env:
           NEXT_VERSION: ${{ inputs.next }}
         run: |
-          mvn -B versions:set versions:commit -DnewVersion=$NEXT_VERSION
-          mvn -B versions:set versions:commit -DnewVersion=$NEXT_VERSION -f integration-tests
+          mvn -B versions:set versions:commit -DnewVersion=$NEXT_VERSION -Pprepare-release
           
           git config --global user.email "project.openubl.preview.bot@gmail.com"
           git config --global user.name "Project-Openubl Bot"
