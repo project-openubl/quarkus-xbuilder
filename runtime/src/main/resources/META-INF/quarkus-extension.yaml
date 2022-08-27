@@ -1,9 +1,10 @@
-name: Quarkus Xbuilder
-#description: Do something useful.
+name: "Quarkus XBuilder"
+description: "XBuilder support."
 metadata:
-#  keywords:
-#    - quarkus-xbuilder
+  keywords:
+    - quarkus-xbuilder
+    - openubl
 #  guide: ...
-#  categories:
-#    - "miscellaneous"
-#  status: "preview"
+  categories:
+    - "miscellaneous"
+  status: "preview"
