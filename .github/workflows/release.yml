@@ -22,7 +22,6 @@ jobs:
           RELEASE_VERSION: ${{ inputs.version }}
         run: |
           mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION -Pprepare-release
-
           git config --global user.email "project.openubl.preview.bot@gmail.com"
           git config --global user.name "Project-Openubl Bot"
           git commit --allow-empty -a -m "🏁 Releasing version $RELEASE_VERSION"
@@ -33,7 +32,6 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 11
-          cache: maven
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
@@ -51,8 +49,6 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 11
-          cache: maven
-          gpg-private-key: ${{ secrets.gpg_private_key }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
       - name: GitHub Release
         run: mvn --batch-mode clean source:jar javadoc:jar deploy -P github,release -DskipTests
@@ -77,8 +73,7 @@ jobs:
         env:
           NEXT_VERSION: ${{ inputs.next }}
         run: |
-          mvn -B versions:set versions:commit -DnewVersion=$NEXT_VERSION -Pprepare-release
-          
+          mvn -B versions:set versions:commit -DnewVersion=$NEXT_VERSION -Pprepare-release          
           git config --global user.email "project.openubl.preview.bot@gmail.com"
           git config --global user.name "Project-Openubl Bot"
           git commit -a -m "⬆️  Next version $NEXT_VERSION"
