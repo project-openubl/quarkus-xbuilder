@@ -24,7 +24,7 @@ jobs:
           cache: maven
       - name: Set release version
         env:
-          NEXT_VERSION: ${{ inputs.version }}
+          RELEASE_VERSION: ${{ inputs.version }}
         run: |
           mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION
           mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION -f integration-tests/
