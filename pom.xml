@@ -223,6 +223,9 @@
     <profiles>
         <profile>
             <id>ossrh</id>
+            <properties>
+                <gpg.executable>gpg2</gpg.executable>
+            </properties>
             <distributionManagement>
                 <repository>
                     <id>ossrh</id>
