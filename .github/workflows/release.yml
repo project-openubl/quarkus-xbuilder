@@ -23,7 +23,8 @@ jobs:
           distribution: temurin
           cache: maven
       - name: Set release version
-        id: version
+        env:
+          NEXT_VERSION: ${{ inputs.version }}
         run: |
           mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION
           mvn -B versions:set versions:commit -DnewVersion=$RELEASE_VERSION -f integration-tests/
@@ -31,7 +32,7 @@ jobs:
           git config --global user.email "project.openubl.preview.bot@gmail.com"
           git config --global user.name "Project-Openubl Bot"
           git commit --allow-empty -a -m "🏁 Releasing version $RELEASE_VERSION"
-          git push origin HEAD:master        
+          git push origin HEAD:master
 
   release:
     needs: [ version ]
