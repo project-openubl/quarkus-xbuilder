@@ -24,12 +24,13 @@ import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
-import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceDirectoryBuildItem;
+import io.quarkus.deployment.builditem.nativeimage.NativeImageResourceBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ServiceProviderBuildItem;
 import io.quarkus.deployment.util.ServiceUtil;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Set;
 
 class QuarkusXbuilderProcessor {
@@ -50,9 +51,31 @@ class QuarkusXbuilderProcessor {
     }
 
     @BuildStep
-    void registerTemplates(BuildProducer<NativeImageResourceDirectoryBuildItem> resource) {
-        resource.produce(new NativeImageResourceDirectoryBuildItem("templates"));
+    void registerTemplates(BuildProducer<NativeImageResourceBuildItem> resource) throws URISyntaxException {
+        resource.produce(new NativeImageResourceBuildItem(
+                "templates/Renderer/creditNote.xml",
+                "templates/Renderer/debitNote.xml",
+                "templates/Renderer/invoice.xml",
+                "templates/ubl/common/signature.xml",
+                "templates/ubl/standard/include/address.xml",
+                "templates/ubl/standard/include/contact.xml",
+                "templates/ubl/standard/include/customer.xml",
+                "templates/ubl/standard/include/document-line.xml",
+                "templates/ubl/standard/include/documentos-relacionados.xml",
+                "templates/ubl/standard/include/general-data.xml",
+                "templates/ubl/standard/include/guias.xml",
+                "templates/ubl/standard/include/monetary-total.xml",
+                "templates/ubl/standard/include/namespaces.xml",
+                "templates/ubl/standard/include/note/invoice-reference.xml",
+                "templates/ubl/standard/include/payment-terms.xml",
+                "templates/ubl/standard/include/supplier.xml",
+                "templates/ubl/standard/include/tax-total.xml",
+                "templates/ubl/standard/include/ubl-extensions.xml"
+        ));
+
+//        resource.produce(new NativeImageResourceDirectoryBuildItem("templates"));
     }
+
 
     @BuildStep
     void registerServices(BuildProducer<ServiceProviderBuildItem> services) throws IOException {

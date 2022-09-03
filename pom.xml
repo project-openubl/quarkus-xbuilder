@@ -45,6 +45,8 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
         <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+
+        <main.basedir>${maven.multiModuleProjectDirectory}</main.basedir>
     </properties>
 
     <url>https://project-openubl.github.io/</url>
@@ -198,7 +200,7 @@
                 <artifactId>license-maven-plugin</artifactId>
                 <version>4.1</version>
                 <configuration>
-                    <header>tools/copyright.txt</header>
+                    <header>${main.basedir}/tools/copyright.txt</header>
                     <properties>
                         <owner>Project OpenUBL</owner>
                         <email>projectopenubl+subscribe@googlegroups.com</email>
