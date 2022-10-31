@@ -1,3 +1,5 @@
+# MERGED INTO https://github.com/project-openubl/xbuilder
+
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.project-openubl/quarkus-xbuilder)](https://search.maven.org/artifact/io.github.project-openubl/quarkus-xbuilder/)
 [![License](https://img.shields.io/github/license/project-openubl/quarkus-xbuilder?logo=apache)](https://www.apache.org/licenses/LICENSE-2.0)
 ![CI](https://github.com/project-openubl/quarkus-xbuilder/workflows/CI/badge.svg)
